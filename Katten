@@ -1,0 +1,68 @@
+//Der dannes nye variabler via. kommandoen let.
+let x;
+let y;
+let x2 = 250;
+let y2 = 250;
+let speed = 3;
+let a = speed;
+let b = 0;
+let d = 40;
+let imgSize = 50;
+
+//Prøvede at sætte Junes ind, men det virkede ikke :(
+function preloud() {
+  Junes = loadImage("Junes.png");
+}
+
+//Setup() er til når man loader spillet op. Derfor sættes canvas og variablerne til x og y til at være random til senere brug.
+function setup() {
+  createCanvas(500, 500);
+  x = random(0, width);
+  y = random(0, height);
+}
+//Draw() er til a udføre bestemte commands. Derfor tilføjer vi bl.a. positionen af cirklerne.
+function draw() {
+  x += speed * a;
+  y += speed * b;
+  borderCheck();
+  clear();
+  circle(x2, y2, d);
+  fill(180, 100, 0);
+  circle(x, y, d);
+  fill(0, 20, 20);
+  keyPressed();
+}
+//borcerCheck() hjælper med at få sat en grænse/væk rundt om canvaset. Desuden hjælper det med at få circlerne til at bevæge sig random.
+function borderCheck() {
+  if (x + d / 2 >= width) {
+    a = -speed;
+    b = random(-3, 3);
+  }
+  if (x - d / 2 <= 0) {
+    a = speed;
+    b = random(-3, 3);
+  }
+  if (y + d / 2 >= height) {
+    a = random(-3, 3);
+    b = -speed;
+  }
+  if (y - d / 2 < 0) {
+    a = random(-3, 3);
+    b = speed;
+  }
+}
+//keyPressed er til input fra tasterturen eller musen. Her bliver den brugt til at kunne bevæge en af cirklerne via. pil.
+function keyPressed() {
+  if (keyIsDown(LEFT_ARROW)) {
+    x2 -= speed;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    x2 += speed;
+  }
+  if (keyIsDown(UP_ARROW)) {
+    y2 -= speed;
+  }
+  if (keyIsDown(DOWN_ARROW)) {
+    y2 += speed;
+  }
+}
