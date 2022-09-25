@@ -10,8 +10,9 @@ let d = 40;
 let imgSize = 50;
 
 //Prøvede at sætte Junes ind, men det virkede ikke :(
-function preloud() {
+function preload() {
   Junes = loadImage("Junes.png");
+  //billede af Junes
 }
 
 //Setup() er til når man loader spillet op. Derfor sættes canvas og variablerne til x og y til at være random til senere brug.
@@ -22,6 +23,8 @@ function setup() {
 }
 //Draw() er til a udføre bestemte commands. Derfor tilføjer vi bl.a. positionen af cirklerne.
 function draw() {
+background(200);
+image(img,x,y,50);
   x += speed * a;
   y += speed * b;
   borderCheck();
